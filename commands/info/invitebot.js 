@@ -1,0 +1,23 @@
+const { MessageEmbed } = require('discord.js');
+
+module.exports = {
+    config: {
+        name: "invitebot",
+        description: "Invite aries bot to your server",
+        usage: "invitebot",
+        noalias: "invite",
+        category: "info",
+        accessableby: "everyone"
+    },
+    run: async (bot, message, args) => {
+
+        message.channel.send("**Pinging...**").then(m => {
+            let ping = m.createdTimestamp - message.createdTimestamp
+            const embed = new MessageEmbed()
+                .setColor("GREEN")
+                .setDescription(`**[🐐Invite Bot](https://discord.com/api/oauth2/authorize?client_id=799784473524305982&permissions=8&scope=bot)**`)
+            message.channel.send(embed)
+            m.delete()
+        })
+    }
+};
